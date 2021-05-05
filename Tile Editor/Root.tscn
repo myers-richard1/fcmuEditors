@@ -1,0 +1,142 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://UIRoot.gd" type="Script" id=1]
+[ext_resource path="res://eight.png" type="Texture" id=2]
+[ext_resource path="res://TileSizeDropdown.gd" type="Script" id=3]
+
+[node name="Root" type="Node2D"]
+
+[node name="UIRoot" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EditableSprite" type="TextureRect" parent="UIRoot"]
+margin_left = 146.22
+margin_top = 14.1605
+margin_right = 186.22
+margin_bottom = 54.1605
+texture = ExtResource( 2 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorPicker" type="ColorPicker" parent="UIRoot"]
+margin_left = 718.388
+margin_top = 60.5305
+margin_right = 1026.39
+margin_bottom = 522.53
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AddTileButton" type="Button" parent="UIRoot"]
+margin_left = 5.8399
+margin_top = 552.727
+margin_right = 37.8399
+margin_bottom = 584.727
+rect_min_size = Vector2( 32, 32 )
+text = "+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TileScroller" type="ScrollContainer" parent="UIRoot"]
+margin_left = 81.0
+margin_top = 520.0
+margin_right = 914.0
+margin_bottom = 580.0
+scroll_vertical_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UIRoot/TileScroller"]
+
+[node name="AddPaletteButton" type="Button" parent="UIRoot"]
+margin_left = 18.5559
+margin_top = 1.3008
+margin_right = 38.5559
+margin_bottom = 21.3008
+text = "+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PaletteScroller" type="ScrollContainer" parent="UIRoot"]
+margin_left = 13.0
+margin_top = 14.0
+margin_right = 111.0
+margin_bottom = 424.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UIRoot/PaletteScroller"]
+
+[node name="ColorRectParent" type="Control" parent="UIRoot"]
+margin_left = 750.0
+margin_top = 5.0
+margin_right = 790.0
+margin_bottom = 45.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Color1" type="ColorRect" parent="UIRoot/ColorRectParent"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Color2" type="ColorRect" parent="UIRoot/ColorRectParent"]
+margin_left = 50.0
+margin_right = 90.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Color3" type="ColorRect" parent="UIRoot/ColorRectParent"]
+margin_left = 100.0
+margin_right = 140.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Color4" type="ColorRect" parent="UIRoot/ColorRectParent"]
+margin_left = 150.0
+margin_right = 190.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TileSizeDropdown" type="OptionButton" parent="UIRoot"]
+margin_left = 6.6088
+margin_top = 515.073
+margin_right = 35.6088
+margin_bottom = 535.073
+script = ExtResource( 3 )
+
+[node name="ExportButton" type="Button" parent="UIRoot"]
+margin_left = 925.546
+margin_top = 563.892
+margin_right = 1006.55
+margin_bottom = 583.892
+text = "Export"
+[connection signal="gui_input" from="UIRoot/EditableSprite" to="UIRoot" method="_on_EditableSprite_gui_input"]
+[connection signal="color_changed" from="UIRoot/ColorPicker" to="UIRoot" method="_on_ColorPicker_color_changed"]
+[connection signal="button_down" from="UIRoot/AddTileButton" to="UIRoot" method="_on_AddTileButton_button_down"]
+[connection signal="button_down" from="UIRoot/AddPaletteButton" to="UIRoot" method="_on_AddPaletteButton_button_down"]
+[connection signal="gui_input" from="UIRoot/ColorRectParent/Color1" to="UIRoot" method="_on_Color1_gui_input"]
+[connection signal="gui_input" from="UIRoot/ColorRectParent/Color2" to="UIRoot" method="_on_Color2_gui_input"]
+[connection signal="gui_input" from="UIRoot/ColorRectParent/Color3" to="UIRoot" method="_on_Color3_gui_input"]
+[connection signal="gui_input" from="UIRoot/ColorRectParent/Color4" to="UIRoot" method="_on_Color4_gui_input"]
+[connection signal="button_down" from="UIRoot/ExportButton" to="UIRoot" method="_on_ExportButton_button_down"]

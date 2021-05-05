@@ -1,0 +1,17 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+void fragment(){
+	vec4 glowColor = vec4(UV.x, UV.y, 1, 1);
+	if (UV.x < .1 || UV.y < .1 || UV.x > .9 || UV.y > .9){
+		COLOR = glowColor;
+	}
+	else {
+		COLOR = texture(TEXTURE, UV);
+	}
+}"
+
+[resource]
+shader = SubResource( 1 )
